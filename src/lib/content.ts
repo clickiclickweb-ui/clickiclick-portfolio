@@ -10,7 +10,7 @@ export const studio = {
   city: "Barcelona",
   region: "Catalunya",
   scope: "Remote · Worldwide",
-  email: "clickiclickweb@gmail.com",
+  email: "diegoolipue@gmail.com",
   phone: "+34 722 753 559",
   social: {
     instagram: "#instagram",
@@ -55,9 +55,7 @@ export type Service = {
   title: string;
   titleItalic: string;
   eyebrow: string;
-  from: { essential: number; full?: number };
-  perMonth?: boolean;
-  perHour?: boolean;
+  from: number | null;
   accent?: boolean;
   description: string;
   deliverables: string[];
@@ -67,17 +65,16 @@ export const services: Service[] = [
   {
     id: "web",
     index: "01",
-    title: "Websites",
-    titleItalic: "a medida",
-    eyebrow: "Diseño + desarrollo + 3D",
-    from: { essential: 2000, full: 4800 },
+    title: "Web design",
+    titleItalic: "& development",
+    eyebrow: "Diseño + desarrollo a medida",
+    from: 1500,
     description:
-      "Cada web nace de cero. Diseño tipográfico, sistema visual propio, microinteracciones cuidadas. Versión esencial para piezas centradas en mensaje; versión completa cuando hace falta motion, 3D real y scroll storytelling.",
+      "Cada web nace de cero. Diseño tipográfico, sistema visual propio, microinteracciones cuidadas, performance medida. Para piezas sencillas y para proyectos con motion y narrativa de scroll — el alcance lo definimos contigo.",
     deliverables: [
       "Diseño visual completo en Figma",
       "Frontend con Next.js + React",
       "Animaciones GSAP / Framer Motion",
-      "3D en React Three Fiber (track full)",
       "Optimización Core Web Vitals",
       "Deploy y dominio configurado",
     ],
@@ -86,10 +83,10 @@ export const services: Service[] = [
   {
     id: "brand",
     index: "02",
-    title: "Brand",
-    titleItalic: "systems",
-    eyebrow: "Identidad + sistema visual",
-    from: { essential: 2400 },
+    title: "Sistemas",
+    titleItalic: "de identidad",
+    eyebrow: "Branding + sistema visual",
+    from: 1200,
     description:
       "Identidades completas: naming opcional, marca, paleta cromática, sistema tipográfico, guías de aplicación, plantillas. Sistemas que viven más allá del logo.",
     deliverables: [
@@ -103,10 +100,10 @@ export const services: Service[] = [
   {
     id: "ai",
     index: "03",
-    title: "AI",
-    titleItalic: "products",
-    eyebrow: "Agentes · Integraciones · LLMs",
-    from: { essential: 3600 },
+    title: "Integraciones",
+    titleItalic: "IA & agentes",
+    eyebrow: "Agentes · LLMs · RAG · workflows",
+    from: 1800,
     description:
       "Productos con inteligencia artificial reales: agentes a medida, chatbots con personalidad, integraciones LLM en webs y procesos. Construidos con Claude, OpenAI, modelos open-source — el más adecuado a cada caso.",
     deliverables: [
@@ -120,10 +117,10 @@ export const services: Service[] = [
   {
     id: "automations",
     index: "04",
-    title: "Automations",
-    titleItalic: "& flows",
-    eyebrow: "n8n · Make · Scripts custom",
-    from: { essential: 1800 },
+    title: "Automatizaciones",
+    titleItalic: "& flujos",
+    eyebrow: "n8n · Make · scripts custom",
+    from: 600,
     description:
       "Automatizo procesos de negocio: integraciones entre herramientas (Notion, Airtable, Slack, CRMs, GitHub), workflows visuales en n8n/Make, scripts a medida cuando los visuales no llegan.",
     deliverables: [
@@ -135,38 +132,20 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "social",
+    id: "other",
     index: "05",
-    title: "Social",
-    titleItalic: "strategy",
-    eyebrow: "Estrategia · Contenido · Comunidad",
-    from: { essential: 1200 },
-    perMonth: true,
+    title: "Otros",
+    titleItalic: "proyectos",
+    eyebrow: "Social · consulting · piezas a medida",
+    from: null,
     description:
-      "Pack mensual continuo. Estrategia editorial, calendario de contenido, piezas gráficas, copy, gestión de la comunidad. Para marcas que necesitan voz propia, no más ruido.",
+      "Estrategia y contenido para redes, sesiones de consultoría creativa, dirección de proyectos puntuales y cualquier otra pieza digital que pida criterio. Presupuestamos cada caso por separado tras una llamada.",
     deliverables: [
-      "Estrategia + content pillars",
-      "Calendario editorial mensual",
-      "Piezas gráficas (8-16/mes)",
-      "Copywriting + tono editorial",
-      "Reporting mensual con insights",
-    ],
-  },
-  {
-    id: "consulting",
-    index: "06",
-    title: "Creative",
-    titleItalic: "consulting",
-    eyebrow: "Sesiones · Audits · Dirección",
-    from: { essential: 180 },
-    perHour: true,
-    description:
-      "Consultoría puntual o continuada. Auditorías UX/UI sobre tu producto vivo, dirección creativa para tu equipo interno, sesiones de estrategia. Para cuando no necesitas que ejecutemos, solo que pensemos contigo.",
-    deliverables: [
-      "Audit UX/UI escrito",
-      "Sesiones 1-on-1 (60-90 min)",
+      "Estrategia social + calendario editorial",
+      "Sesiones de consultoría / audits UX",
       "Dirección creativa por sprint",
-      "Revisión de portfolios / equipos",
+      "Piezas digitales a medida",
+      "Mantenimiento mensual de proyectos vivos",
     ],
   },
 ];
@@ -246,19 +225,6 @@ export const projects: Project[] = [
       { value: "MED", label: "Origen Mediterráneo" },
     ],
   },
-  {
-    id: "next",
-    index: "03",
-    name: "En desarrollo",
-    subtitle: "Próximamente",
-    year: "MMXXVI",
-    services: ["—"],
-    sector: "—",
-    url: "#contact",
-    placeholder: true,
-    description:
-      "Hueco reservado para la siguiente obra. Si quieres firmar la tercera, escribe.",
-  },
 ];
 
 export const process = [
@@ -296,7 +262,7 @@ export const process = [
     pull:
       "Construcción. Código limpio, animaciones cuidadas, performance medida.",
     body:
-      "Next.js, React Three Fiber, GSAP, Tailwind. Cada commit pasa Lighthouse. Cada animación tiene easing custom. Sin shortcuts.",
+      "Next.js, GSAP, Lenis, Tailwind, TypeScript. Cada commit pasa Lighthouse. Cada animación tiene easing custom. Sin shortcuts.",
   },
   {
     index: "05",
@@ -309,48 +275,61 @@ export const process = [
   },
 ];
 
-export const testimonials = [
+export type Testimonial = {
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  rating: 4.5 | 5;
+};
+
+export const testimonials: Testimonial[] = [
   {
-    name: "Marta Solé",
+    name: "María García",
     role: "Founder",
-    company: "Atelier Solé",
+    company: "Restaurante Atlas",
     quote:
-      "Diego entiende lo que quieres antes de que sepas explicarlo. Entregó una web que parecía hecha por un estudio cinco veces más grande.",
+      "Diego entendió lo que buscábamos desde la primera llamada. La web se siente como nuestro local, no como una plantilla genérica de hostelería.",
+    rating: 5,
   },
   {
-    name: "Andreu Ribó",
-    role: "Director de marca",
-    company: "Velox Bikes",
+    name: "Carlos Martín",
+    role: "CEO",
+    company: "Estudio Norte",
     quote:
-      "Trabajamos con tres agencias antes. Ninguna entregó la pieza que él entregó. Detalle obsesivo, animaciones que se sienten caras, código que no nos avergüenza enseñar a un dev.",
+      "Trabajo limpio y entregado en plazo. Nos quedó la sensación de haber trabajado con alguien que se preocupa por el detalle.",
+    rating: 5,
   },
   {
-    name: "Lucía Marín",
+    name: "Ana López",
+    role: "Directora de marketing",
+    company: "Marca Ámbar",
+    quote:
+      "La automatización que montó nos ahorra unas diez horas a la semana. Pagó la inversión en mes y medio.",
+    rating: 4.5,
+  },
+  {
+    name: "Sergio Vidal",
+    role: "Diseñador freelance",
+    company: "Independiente",
+    quote:
+      "Trabajamos un proyecto a cuatro manos. Profesional, con criterio, sin filtros y honesto. Aprendí cosas. Volvería a colaborar.",
+    rating: 4.5,
+  },
+  {
+    name: "Lucía Ferrer",
     role: "Co-founder",
-    company: "Cyper Botanical",
+    company: "Talleres Polar",
     quote:
-      "Necesitábamos una web que pareciera de revista y vendiera como tienda. Diego no eligió: las hizo las dos cosas a la vez. Cinco meses después aún recibimos mensajes preguntándonos quién la hizo.",
-  },
-  {
-    name: "Pol Vidal",
-    role: "Head of Product",
-    company: "Anonymous SaaS",
-    quote:
-      "Le pedimos una integración de IA. Nos devolvió, además, una propuesta de UX que reescribió cómo pensamos sobre el producto. Esa consultoría sola valió el doble.",
-  },
-  {
-    name: "Inés Carbó",
-    role: "Creative Director",
-    company: "Studio Carbó",
-    quote:
-      "Subcontraté a Diego para un proyecto en el que íbamos cortos. Entregó por delante de plazo, en su voz, sin pedir nada más que el brief. Repetimos.",
+      "Buscábamos un estudio que entendiera lo nuestro sin que se lo explicáramos tres veces. Aquí lo entendieron a la primera.",
+    rating: 5,
   },
 ];
 
 export const faq = [
   {
     q: "¿Cuánto tarda una web?",
-    a: "Una pieza esencial: 4 semanas. Una pieza con 3D y motion completo: 6 a 9 semanas. Te doy fechas reales, no plazos optimistas que luego se rompen.",
+    a: "Entre 4 y 9 semanas según alcance. Una pieza centrada en mensaje: alrededor de 4 semanas. Una pieza con animaciones complejas y narrativa de scroll: 6 a 9 semanas. Te doy fechas reales, no plazos optimistas que luego se rompen.",
   },
   {
     q: "¿Trabajas solo o con equipo?",
@@ -396,7 +375,6 @@ export const footerNav = [
   { label: "Servicios", href: "#services" },
   { label: "Trabajo", href: "#work" },
   { label: "Proceso", href: "#process" },
-  { label: "Tarifas", href: "#pricing" },
   { label: "Estudio", href: "#about" },
   { label: "FAQ", href: "#faq" },
   { label: "Contacto", href: "#contact" },

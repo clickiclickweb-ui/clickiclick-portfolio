@@ -4,7 +4,6 @@ import { Manifesto } from "@/components/sections/Manifesto";
 import { Services } from "@/components/sections/Services";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { Process } from "@/components/sections/Process";
-import { Pricing } from "@/components/sections/Pricing";
 import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
@@ -21,7 +20,6 @@ export default function HomePage() {
         <Services />
         <SelectedWork />
         <Process />
-        <Pricing />
         <About />
         <Testimonials />
         <FAQ />

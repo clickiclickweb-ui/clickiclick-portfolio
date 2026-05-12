@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { studio } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Aviso legal",
@@ -6,65 +7,42 @@ export const metadata: Metadata = {
 
 export default function AvisoPage() {
   return (
-    <article className="space-y-6 text-cream/90">
+    <article className="space-y-8 text-cream/90 max-w-3xl">
       <p className="font-mono-meta text-cream-soft">Legal — Documento 03</p>
-      <h1 className="font-display text-display-md uppercase mb-4">
+      <h1 className="font-display text-display-md uppercase">
         Aviso legal
       </h1>
-      <p className="text-cream-soft">
-        Última actualización: MMXXVI. Documento provisional pendiente de
-        validación legal.
-      </p>
 
-      <h2 className="font-display text-2xl uppercase mt-10">
-        Titularidad del sitio
-      </h2>
-      <p>
-        Este sitio es propiedad de Diego Puelles, responsable del estudio
-        independiente Clickiclick.studio, con sede profesional en Barcelona y
-        contacto en{" "}
+      <p className="text-cream text-base md:text-lg leading-relaxed">
+        Este aviso legal está siendo redactado formalmente. Para cualquier
+        consulta sobre titularidad del sitio, propiedad intelectual de los
+        proyectos mostrados o información legal del estudio, escribe
+        directamente a{" "}
         <a
-          href="mailto:clickiclickweb@gmail.com"
-          className="text-accent hover-line"
+          href={`mailto:${studio.email}`}
+          className="text-accent hover-line break-all"
         >
-          clickiclickweb@gmail.com
-        </a>
-        .
+          {studio.email}
+        </a>{" "}
+        y respondemos en menos de 48 horas.
       </p>
 
-      <h2 className="font-display text-2xl uppercase mt-10">
-        Propiedad intelectual
-      </h2>
-      <p>
-        Todo el contenido del sitio — textos, imágenes, código, sistema visual,
-        marcas referenciadas — está protegido por derechos de propiedad
-        intelectual. Los proyectos mostrados en la sección Selected Work son
-        propiedad de sus respectivos clientes y se exhiben con su autorización.
+      <p className="text-cream-soft text-base leading-relaxed">
+        Mientras tanto: el sitio es propiedad de Diego Puelles, responsable del
+        estudio independiente CLICKICLICK.studio. Los proyectos mostrados en
+        Selected Work son propiedad de sus respectivos clientes y se exhiben
+        con su autorización. Las relaciones derivadas del uso del sitio se
+        rigen por la legislación española.
       </p>
 
-      <h2 className="font-display text-2xl uppercase mt-10">
-        Limitación de responsabilidad
-      </h2>
-      <p>
-        Hacemos esfuerzo razonable por mantener el sitio operativo y la
-        información actualizada, pero no podemos garantizar la ausencia total
-        de interrupciones ni errores. El acceso es bajo tu propia
-        responsabilidad.
-      </p>
-
-      <h2 className="font-display text-2xl uppercase mt-10">
-        Ley aplicable
-      </h2>
-      <p>
-        Las relaciones derivadas del uso de este sitio se rigen por la
-        legislación española. Cualquier controversia se someterá a los
-        juzgados competentes de Barcelona.
-      </p>
-
-      <p className="text-cream-soft pt-10 font-mono-meta">
-        ✷ Texto provisional. Versión definitiva pendiente de validación por
-        asesor legal antes de la producción final.
-      </p>
+      <div className="pt-10 border-t border-line">
+        <p className="font-italic-display text-cream-soft">
+          CLICKICLICK.studio — Estudio digital de autor
+        </p>
+        <p className="font-mono-meta text-cream-soft mt-2">
+          {studio.city} · MMXXVI
+        </p>
+      </div>
     </article>
   );
 }

@@ -70,34 +70,6 @@ export function FAQ() {
         </Accordion.Root>
       </div>
 
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            height: 0;
-          }
-          to {
-            opacity: 1;
-            height: var(--radix-accordion-content-height);
-          }
-        }
-        @keyframes fadeOut {
-          from {
-            opacity: 1;
-            height: var(--radix-accordion-content-height);
-          }
-          to {
-            opacity: 0;
-            height: 0;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .animate-fadeOut {
-          animation: fadeOut 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-      `}</style>
     </section>
   );
 }

@@ -3,18 +3,53 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "@/lib/content";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, StarHalf } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
 import { cn } from "@/lib/utils";
+
+function StarRating({ value }: { value: 4.5 | 5 }) {
+  const full = Math.floor(value);
+  const half = value % 1 !== 0;
+  return (
+    <span
+      className="inline-flex items-center gap-0.5"
+      aria-label={`${value} estrellas sobre 5`}
+    >
+      {Array.from({ length: full }).map((_, i) => (
+        <Star
+          key={`f-${i}`}
+          className="size-3.5 fill-accent text-accent"
+          strokeWidth={1.5}
+        />
+      ))}
+      {half ? (
+        <StarHalf
+          className="size-3.5 fill-accent text-accent"
+          strokeWidth={1.5}
+        />
+      ) : null}
+      {Array.from({ length: 5 - full - (half ? 1 : 0) }).map((_, i) => (
+        <Star
+          key={`e-${i}`}
+          className="size-3.5 text-line-strong"
+          strokeWidth={1.5}
+        />
+      ))}
+      <span className="font-mono-meta text-cream-soft ml-2">
+        {value.toFixed(1)}
+      </span>
+    </span>
+  );
+}
 
 // Editorial geometric avatar — no fake stock photos
 function Avatar({ index }: { index: number }) {
   const variants = [
-    "linear-gradient(135deg, #ff5b3c 0%, #c93617 100%)",
+    "linear-gradient(135deg, #a31e38 0%, #6e1425 100%)",
     "linear-gradient(135deg, #8eb7b5 0%, #2d5856 100%)",
     "linear-gradient(135deg, #b88746 0%, #6b4a1f 100%)",
     "linear-gradient(135deg, #f3ecde 0%, #9a8d77 100%)",
-    "linear-gradient(135deg, #ff5b3c 0%, #b88746 100%)",
+    "linear-gradient(135deg, #a31e38 0%, #b88746 100%)",
   ];
   return (
     <div
@@ -96,7 +131,8 @@ export function Testimonials() {
                 </span>
               </div>
               <div className="md:col-span-10">
-                <p className="font-display text-2xl md:text-4xl leading-snug text-cream max-w-5xl">
+                <StarRating value={t.rating} />
+                <p className="mt-5 font-display text-2xl md:text-4xl leading-snug text-cream max-w-5xl">
                   {t.quote}
                 </p>
                 <footer className="mt-8 flex items-baseline gap-3 flex-wrap">
@@ -146,8 +182,8 @@ export function Testimonials() {
         </div>
 
         <p className="mt-8 font-mono-meta text-cream-soft">
-          ✷ Testimonios placeholder. Se sustituirán por reales conforme los
-          clientes firmen su consentimiento público.
+          ✷ Testimonios provisionales. Se sustituirán por reales conforme
+          cierre los primeros clientes y firmen su consentimiento.
         </p>
       </div>
     </section>

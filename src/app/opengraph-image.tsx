@@ -57,7 +57,7 @@ export default async function OG() {
             }}
           >
             <span>CLICK</span>
-            <span style={{ color: "#ff5b3c" }}>.</span>
+            <span style={{ color: "#a31e38" }}>.</span>
             <span>ICLICK</span>
           </div>
           <div
@@ -65,7 +65,7 @@ export default async function OG() {
               marginTop: 24,
               fontSize: 42,
               fontStyle: "italic",
-              color: "#ff5b3c",
+              color: "#a31e38",
               letterSpacing: "-0.02em",
             }}
           >

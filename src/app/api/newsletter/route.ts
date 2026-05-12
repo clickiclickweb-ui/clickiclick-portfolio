@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
       // Fallback — send notification to ops email
       await resend.emails.send({
         from: "Clickiclick <onboarding@resend.dev>",
-        to: process.env.CONTACT_EMAIL ?? "clickiclickweb@gmail.com",
+        to: process.env.CONTACT_EMAIL ?? "diegoolipue@gmail.com",
         subject: "Nueva suscripción newsletter",
         text: `Email: ${email}\nConsent: ${consent}\nDate: ${new Date().toISOString()}`,
       });

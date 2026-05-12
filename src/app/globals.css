@@ -9,8 +9,8 @@
   --color-cream: #f3ecde;
   --color-cream-soft: #9a8d77;
   --color-cream-mute: #5a5046;
-  --color-accent: #ff5b3c;
-  --color-accent-deep: #c93617;
+  --color-accent: #a31e38;
+  --color-accent-deep: #6e1425;
   --color-cool: #8eb7b5;
   --color-gold: #b88746;
   --color-line: rgba(243, 236, 222, 0.12);
@@ -233,6 +233,34 @@ html.lenis body {
 .marquee-track {
   animation: marqueeX 50s linear infinite;
   will-change: transform;
+}
+
+/* Radix Accordion content fade — used by FAQ */
+@keyframes accordion-fade-in {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-fade-out {
+  from {
+    opacity: 1;
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    opacity: 0;
+    height: 0;
+  }
+}
+.animate-fadeIn {
+  animation: accordion-fade-in 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.animate-fadeOut {
+  animation: accordion-fade-out 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* Hide cursor on canvas where custom interactions handle it */

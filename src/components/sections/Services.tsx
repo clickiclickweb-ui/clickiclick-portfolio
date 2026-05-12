@@ -2,20 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { services } from "@/lib/content";
+import { services, type Service } from "@/lib/content";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
-function formatPrice(svc: (typeof services)[number]) {
-  const from = svc.from.essential;
-  if (svc.perMonth) return `desde €${from.toLocaleString("es-ES")} /mes`;
-  if (svc.perHour) return `€${from}/h`;
-  if ("full" in svc.from && svc.from.full) {
-    return `desde €${from.toLocaleString("es-ES")} → €${svc.from.full.toLocaleString("es-ES")}`;
-  }
-  return `desde €${from.toLocaleString("es-ES")}`;
+function formatPrice(svc: Service) {
+  if (svc.from === null) return "bajo presupuesto";
+  return `desde €${svc.from.toLocaleString("es-ES")}`;
 }
 
 export function Services() {

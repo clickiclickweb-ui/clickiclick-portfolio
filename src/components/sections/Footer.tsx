@@ -6,7 +6,7 @@ import { Wordmark } from "../shared/Wordmark";
 import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
-  const [time, setTime] = useState<string>("");
+  const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
     function update() {
@@ -26,21 +26,7 @@ export function Footer() {
 
   return (
     <footer className="relative bg-ink-deep border-t border-line">
-      {/* Big wordmark band */}
-      <div className="container-wide pt-20 md:pt-28 pb-12">
-        <h2
-          className="font-display text-cream uppercase leading-[0.85] tracking-[-0.05em] text-[clamp(4.5rem,18vw,18rem)] select-none"
-          aria-hidden
-        >
-          Clickiclick
-          <span className="text-accent">.</span>
-        </h2>
-      </div>
-
-      <div className="line-thin" />
-
-      {/* Grid: nav + meta + social */}
-      <div className="container-wide py-12 md:py-16 grid grid-cols-2 md:grid-cols-12 gap-y-10 md:gap-10">
+      <div className="container-wide pt-20 md:pt-24 py-12 md:py-16 grid grid-cols-2 md:grid-cols-12 gap-y-10 md:gap-10">
         {/* Studio block */}
         <div className="col-span-2 md:col-span-4 max-w-sm">
           <Wordmark className="text-base" />
@@ -48,8 +34,12 @@ export function Footer() {
             Estudio de diseño, desarrollo, IA y automatización. Trabajos a
             medida desde {studio.city}, para clientes en Europa y América.
           </p>
-          <p className="mt-6 font-mono-meta text-cream-soft">
-            {studio.city} · {time}
+          <p
+            className="mt-6 font-mono-meta text-cream-soft"
+            suppressHydrationWarning
+          >
+            {studio.city}
+            {time ? <> · {time}</> : null}
           </p>
         </div>
 
@@ -143,7 +133,7 @@ export function Footer() {
           </li>
           <li>
             <span>
-              Hecho a mano · Next.js · R3F
+              Hecho a mano · Next.js · GSAP · Lenis
             </span>
           </li>
         </ul>

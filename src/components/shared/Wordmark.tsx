@@ -12,20 +12,19 @@ export function Wordmark({
   return (
     <span
       className={cn(
-        "inline-flex items-baseline font-sans font-extrabold tracking-[-0.04em] text-cream leading-none",
+        "inline-flex items-baseline font-sans font-extrabold tracking-[-0.035em] text-cream leading-none whitespace-nowrap shrink-0",
         className,
       )}
       aria-label="Clickiclick.studio"
     >
-      <span>CLICK</span>
+      <span>CLICKICLICK</span>
       {withDot ? (
         <span aria-hidden className="text-accent">
           .
         </span>
       ) : null}
-      <span>ICLICK</span>
       {withSubscript ? (
-        <span className="font-italic-display text-[0.45em] font-normal italic translate-y-[-0.15em] ml-[0.18em] text-cream-soft tracking-normal">
+        <span className="font-italic-display text-[0.55em] font-normal italic translate-y-[-0.18em] ml-[0.12em] text-cream-soft tracking-normal">
           studio
         </span>
       ) : null}

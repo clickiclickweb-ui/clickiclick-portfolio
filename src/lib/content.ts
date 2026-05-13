@@ -39,12 +39,12 @@ export const hero = {
 
 export const manifesto = {
   eyebrow: "01 — Manifiesto",
-  display: "Trabajamos al detalle.",
+  display: "Trabajo al detalle.",
   italicAccent: "Cada milímetro.",
   body: [
-    "Clickiclick existe porque el internet de las plantillas ya no nos vale. Las webs nos llegan empaquetadas, indistinguibles, decoradas con animaciones genéricas que pasan sin dejar huella.",
-    "Aquí construimos al revés: a mano, en directo, con la persona que encarga la obra al otro lado. Una sola conversación, una sola firma, una sola pieza terminada que se reconoce de lejos.",
-    "Diseñamos webs, marcas, agentes de IA, automatizaciones y estrategia de contenido — pero la categoría importa menos que el oficio. Lo que entregamos es la pieza que el cliente había imaginado, exactamente.",
+    "Clickiclick existe porque el internet de las plantillas ya no me vale. Las webs llegan empaquetadas, indistinguibles, decoradas con animaciones genéricas que pasan sin dejar huella.",
+    "Aquí construyo al revés: a mano, en directo, con la persona que encarga la obra al otro lado. Una sola conversación, una sola firma, una sola pieza terminada que se reconoce de lejos.",
+    "Diseño webs, marcas, agentes de IA, automatizaciones y proyectos a medida — pero la categoría importa menos que el oficio. Lo que entrego es la pieza que el cliente había imaginado, exactamente.",
   ],
   signature: "— Diego Puelles",
 };
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     video: "/videos/velox.mp4",
     poster: "/images/projects/velox/desktop.webp",
     description:
-      "Una bicicleta urbana premium pedía una web que comunicara superioridad sin gritar. Construimos la pieza alrededor de la materialidad del producto — carbono, naranja, ciudad — y dejamos que la tipografía hiciera el trabajo pesado.",
+      "Una bicicleta urbana premium pedía una web que comunicara superioridad sin gritar. Construí la pieza alrededor de la materialidad del producto — carbono, naranja, ciudad — y dejé que la tipografía hiciera el trabajo pesado.",
     role: "Diseño y desarrollo end-to-end.",
     metrics: [
       { value: "6.4 kg", label: "Peso total" },
@@ -233,16 +233,16 @@ export const process = [
     name: "Discovery",
     duration: "1 semana",
     pull:
-      "Escuchamos. Inmersión completa en tu marca, tu cliente, tu mercado, tus referentes.",
+      "Escucho. Inmersión completa en tu marca, tu cliente, tu mercado, tus referentes.",
     body:
-      "Una llamada profunda + un cuestionario detallado + research independiente. Salimos con un diagnóstico escrito y una propuesta estratégica.",
+      "Una llamada profunda + un cuestionario detallado + research independiente. Salgo con un diagnóstico escrito y una propuesta estratégica.",
   },
   {
     index: "02",
     name: "Strategy",
     duration: "1 semana",
     pull:
-      "Definimos el qué y el por qué antes del cómo. Posicionamiento, arquitectura, métricas.",
+      "Defino el qué y el por qué antes del cómo. Posicionamiento, arquitectura, métricas.",
     body:
       "Documento de estrategia: mensaje principal, secciones, jerarquía de información, KPIs, mood inicial. Cierre antes de tocar Figma.",
   },
@@ -253,7 +253,7 @@ export const process = [
     pull:
       "Diseño visual completo en Figma. Sistema, no pantallas sueltas.",
     body:
-      "Dirección de arte → mood → desktop y mobile → micro-interacciones → revisiones. Trabajamos con dos rondas formales y comentarios en directo.",
+      "Dirección de arte → mood → desktop y mobile → micro-interacciones → revisiones. Trabajo con dos rondas formales y comentarios en directo.",
   },
   {
     index: "04",
@@ -269,7 +269,7 @@ export const process = [
     name: "Launch & care",
     duration: "Continuo",
     pull:
-      "Lanzamos contigo, no por ti. Y nos quedamos para los meses siguientes.",
+      "Lanzo contigo, no por ti. Y me quedo para los meses siguientes.",
     body:
       "Deploy, dominio, analítica, formación. Pack opcional de mantenimiento mensual: cambios, mejoras, monitorización, actualizaciones.",
   },

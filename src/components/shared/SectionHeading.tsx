@@ -124,8 +124,12 @@ function AnimatedText({
               display: "inline-block",
               overflow: "hidden",
               lineHeight: 1.05,
-              paddingTop: "0.14em",
-              paddingBottom: "0.08em",
+              paddingTop: "0.18em",
+              paddingBottom: "0.18em",
+              paddingLeft: "0.06em",
+              paddingRight: "0.16em",
+              marginLeft: "-0.06em",
+              marginRight: "-0.14em",
               verticalAlign: "top",
             }}
           >

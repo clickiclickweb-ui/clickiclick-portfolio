@@ -165,20 +165,29 @@ html.lenis body {
   transform: scale(0.97);
 }
 
-/* ───────── Glass button system (C5) ───────── */
+/* ───────── Glass button system (C5 + reinforced) ───────── */
 .btn-glass-primary {
-  background: rgba(163, 30, 56, 0.92);
-  backdrop-filter: blur(12px) saturate(1.1);
-  -webkit-backdrop-filter: blur(12px) saturate(1.1);
-  border: 1px solid rgba(163, 30, 56, 0.35);
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    rgba(193, 50, 80, 0.96) 0%,
+    rgba(163, 30, 56, 0.95) 100%
+  );
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(255, 196, 196, 0.32);
   color: var(--color-cream);
   letter-spacing: 0.02em;
   font-weight: 500;
   border-radius: 4px;
+  transform: translateZ(0);
   box-shadow:
-    0 1px 3px rgba(163, 30, 56, 0.12),
-    0 4px 8px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 1px 2px rgba(163, 30, 56, 0.32),
+    0 4px 12px rgba(163, 30, 56, 0.22),
+    0 8px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
   transition: background 240ms var(--ease-out-quart),
     transform 240ms var(--ease-out-quart),
     box-shadow 240ms var(--ease-out-quart),
@@ -187,13 +196,19 @@ html.lenis body {
 }
 @media (hover: hover) and (pointer: fine) {
   .btn-glass-primary:hover {
-    background: rgba(163, 30, 56, 1);
-    transform: translateY(-1px);
-    border-color: rgba(163, 30, 56, 0.5);
+    background: linear-gradient(
+      180deg,
+      rgba(210, 60, 90, 1) 0%,
+      rgba(163, 30, 56, 1) 100%
+    );
+    transform: translateY(-1px) translateZ(0);
+    border-color: rgba(255, 196, 196, 0.5);
     box-shadow:
-      0 2px 6px rgba(163, 30, 56, 0.2),
-      0 8px 16px rgba(0, 0, 0, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      0 2px 4px rgba(163, 30, 56, 0.4),
+      0 8px 22px rgba(163, 30, 56, 0.32),
+      0 14px 40px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.18);
   }
 }
 .btn-glass-primary:active {
@@ -202,23 +217,39 @@ html.lenis body {
 }
 
 .btn-glass-secondary {
-  background: rgba(243, 236, 222, 0.02);
-  backdrop-filter: blur(8px) saturate(1.05);
-  -webkit-backdrop-filter: blur(8px) saturate(1.05);
-  border: 1px solid rgba(243, 236, 222, 0.22);
+  background: linear-gradient(
+    180deg,
+    rgba(243, 236, 222, 0.06) 0%,
+    rgba(243, 236, 222, 0.02) 100%
+  );
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  border: 1px solid rgba(243, 236, 222, 0.28);
   color: var(--color-cream);
   letter-spacing: 0.02em;
   border-radius: 4px;
+  transform: translateZ(0);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: background 240ms var(--ease-out-quart),
     transform 240ms var(--ease-out-quart),
-    border-color 240ms var(--ease-out-quart);
+    border-color 240ms var(--ease-out-quart),
+    box-shadow 240ms var(--ease-out-quart);
   cursor: pointer;
 }
 @media (hover: hover) and (pointer: fine) {
   .btn-glass-secondary:hover {
-    background: rgba(243, 236, 222, 0.08);
-    border-color: rgba(243, 236, 222, 0.45);
-    transform: translateY(-1px);
+    background: linear-gradient(
+      180deg,
+      rgba(243, 236, 222, 0.12) 0%,
+      rgba(243, 236, 222, 0.06) 100%
+    );
+    border-color: rgba(243, 236, 222, 0.5);
+    transform: translateY(-1px) translateZ(0);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
   }
 }
 .btn-glass-secondary:active {

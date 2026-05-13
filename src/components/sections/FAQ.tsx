@@ -1,7 +1,6 @@
 "use client";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import { Plus, Minus } from "lucide-react";
 import { faq } from "@/lib/content";
 import { Reveal } from "../shared/Reveal";
 import { SectionHeading } from "../shared/SectionHeading";
@@ -42,7 +41,7 @@ export function FAQ() {
               className="border-b border-line group/item"
             >
               <Accordion.Header className="flex">
-                <Accordion.Trigger className="flex flex-1 items-baseline justify-between text-left py-7 md:py-8 gap-8 btn-press focus:outline-none data-[state=open]:[&_.fq-icon-plus]:hidden data-[state=closed]:[&_.fq-icon-minus]:hidden group">
+                <Accordion.Trigger className="flex flex-1 items-baseline justify-between text-left py-7 md:py-8 gap-8 btn-press focus:outline-none group data-[state=open]:[&_.fq-mark]:rotate-45 data-[state=open]:[&_.fq-mark]:text-accent">
                   <div className="flex items-baseline gap-4 md:gap-6">
                     <span className="idx-num">
                       {String(i + 1).padStart(2, "0")}
@@ -51,9 +50,11 @@ export function FAQ() {
                       {item.q}
                     </span>
                   </div>
-                  <span className="shrink-0 size-10 border border-line flex items-center justify-center text-cream-soft group-hover:border-cream/30 transition-colors">
-                    <Plus className="size-4 fq-icon-plus" strokeWidth={1.5} />
-                    <Minus className="size-4 fq-icon-minus" strokeWidth={1.5} />
+                  <span
+                    aria-hidden
+                    className="fq-mark shrink-0 text-2xl text-cream-soft group-hover:text-cream transition-[transform,color] duration-300 ease-out leading-none -mt-0.5"
+                  >
+                    +
                   </span>
                 </Accordion.Trigger>
               </Accordion.Header>

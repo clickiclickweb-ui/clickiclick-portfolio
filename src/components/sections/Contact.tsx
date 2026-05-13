@@ -110,19 +110,20 @@ export function Contact() {
       <div className="container-wide section-pad">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8">
           <div className="md:col-span-3">
-            <p className="font-mono-meta text-cream-soft">Notas del estudio</p>
+            <p className="font-mono-meta text-cream-soft">Newsletter</p>
           </div>
           <div className="md:col-span-9 max-w-3xl">
-            <h3 className="font-display text-display-sm uppercase leading-[1.05]">
-              Notas del estudio,{" "}
+            <h3 className="font-display text-display-sm uppercase leading-[1.1]">
+              Suscríbete al{" "}
               <span className="font-italic-display text-accent">
-                una vez al mes.
-              </span>
+                newsletter
+              </span>{" "}
+              del estudio.
             </h3>
             <p className="mt-4 text-cream-soft text-base md:text-lg leading-relaxed">
-              Una nota corta cuando publico una pieza nueva o aprendo algo
-              que merezca contarse. Cero spam, cero marketing, cancelable en
-              un click.
+              1 email al mes con notas de proceso: piezas que estoy
+              construyendo, decisiones técnicas, recursos que vale la pena
+              compartir. Sin marketing, cancelable en un click.
             </p>
 
             <form

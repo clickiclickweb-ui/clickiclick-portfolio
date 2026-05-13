@@ -144,9 +144,10 @@ export function Testimonials() {
                 </span>
               </div>
               <div className="md:col-span-9">
-                <span className="font-italic-display text-cream-soft text-5xl md:text-6xl leading-none block mb-1">
-                  &ldquo;
-                </span>
+                <span
+                  aria-hidden
+                  className="block h-px w-12 bg-accent mb-6 opacity-70"
+                />
                 <p className="font-display text-cream leading-[1.18] max-w-3xl text-[clamp(1.1rem,1.8vw,1.6rem)]">
                   {t.quote}
                 </p>

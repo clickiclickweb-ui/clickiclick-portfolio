@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wordmark } from "./Wordmark";
-import { Magnetic } from "../ui/Magnetic";
 import { navItems, studio } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -38,16 +37,16 @@ export function Nav() {
             : "bg-ink/10 backdrop-blur-[2px] border-b border-line/40",
         )}
       >
-        <div className="container-wide flex h-16 md:h-20 items-center justify-between">
+        <div className="container-wide flex h-16 md:h-20 items-center justify-between gap-4">
           <a
             href="#hero"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group shrink-0 min-w-0"
             aria-label="Volver al inicio"
           >
-            <span className="font-mono-meta text-cream-soft hidden md:inline">
+            <span className="font-mono-meta text-cream-soft hidden xl:inline">
               {studio.founded}
             </span>
-            <Wordmark className="text-base md:text-lg" />
+            <Wordmark className="text-[1.05rem] md:text-[1.15rem]" />
           </a>
 
           <nav
@@ -68,21 +67,6 @@ export function Nav() {
               </a>
             ))}
           </nav>
-
-          <div className="hidden lg:flex items-center gap-4">
-            <Magnetic strength={0.18}>
-              <a
-                href="#contact"
-                className="btn-glass-secondary inline-flex items-center gap-2 h-10 px-5 font-mono-meta"
-              >
-                <span className="relative flex size-1.5">
-                  <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />
-                  <span className="relative rounded-full size-1.5 bg-accent" />
-                </span>
-                Disponible
-              </a>
-            </Magnetic>
-          </div>
 
           {/* Mobile burger */}
           <button

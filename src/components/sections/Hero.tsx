@@ -69,7 +69,7 @@ export function Hero() {
         {/* Centre display block */}
         <div className="mt-auto pb-6 md:pb-12">
           {/* Wordmark — alternating letter animation */}
-          <h1 className="font-display text-display-xl uppercase text-cream relative">
+          <h1 className="font-display text-display-xl uppercase text-cream relative leading-[1.02]">
             <span className="block">
               <AlternatingDisplay
                 text="CLICKICLICK"
@@ -78,7 +78,7 @@ export function Hero() {
                 letterDuration={1.1}
               />
             </span>
-            <span className="block mt-0 -mt-[0.1em]">
+            <span className="block">
               <span className="font-italic-display text-accent inline-block">
                 <AlternatingDisplay
                   text="studio."

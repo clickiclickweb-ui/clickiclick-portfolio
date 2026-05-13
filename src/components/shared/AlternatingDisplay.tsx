@@ -92,8 +92,10 @@ export function AlternatingDisplay({
             style={{
               display: "inline-block",
               overflow: "hidden",
-              lineHeight: 0.9,
-              paddingBottom: "0.04em",
+              lineHeight: 1.05,
+              paddingTop: "0.12em",
+              paddingBottom: "0.08em",
+              verticalAlign: "top",
             }}
           >
             <motion.span
@@ -104,7 +106,11 @@ export function AlternatingDisplay({
                 delay: startDelay + i * stagger,
                 ease,
               }}
-              style={{ display: "inline-block", willChange: "transform, opacity" }}
+              style={{
+                display: "inline-block",
+                lineHeight: 1,
+                willChange: "transform, opacity",
+              }}
             >
               {ch}
             </motion.span>

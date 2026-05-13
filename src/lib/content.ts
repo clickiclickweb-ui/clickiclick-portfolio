@@ -382,7 +382,7 @@ export const footerNav = [
 
 export const navItems = [
   { label: "Servicios", href: "#services" },
-  { label: "Trabajo", href: "#work" },
+  { label: "Trabajos", href: "#work" },
   { label: "Proceso", href: "#process" },
   { label: "Estudio", href: "#about" },
   { label: "Contacto", href: "#contact" },

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { studio } from "@/lib/content";
-import { Reveal, RevealWords } from "../shared/Reveal";
+import { Reveal } from "../shared/Reveal";
+import { SectionHeading } from "../shared/SectionHeading";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Magnetic } from "../ui/Magnetic";
 
@@ -40,54 +41,44 @@ export function Contact() {
   }
 
   return (
-    <section
-      id="contact"
-      className="relative bg-ink overflow-hidden"
-    >
-      {/* Top: large CTA */}
+    <section id="contact" className="relative bg-ink overflow-hidden">
       <div className="container-wide section-pad border-b border-line">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10">
           <div className="md:col-span-3">
-            <p className="font-mono-meta text-cream-soft">09 — Empezar</p>
+            <p className="font-mono-meta text-cream-soft">08 — Empezar</p>
           </div>
 
           <div className="md:col-span-9">
-            <h2 className="font-display text-display-lg uppercase leading-[0.88] tracking-[-0.04em]">
-              <RevealWords>Tienes una idea.</RevealWords>
-              <br />
-              <span className="font-italic-display text-accent normal-case">
-                <RevealWords delay={0.18}>Yo tengo el oficio.</RevealWords>
-              </span>
-              <br />
-              <RevealWords delay={0.36}>Hablemos.</RevealWords>
-            </h2>
+            <SectionHeading
+              text="Tienes una idea."
+              accent="Yo tengo el oficio. Hablemos."
+              variant="drop-dominant"
+              size="lg"
+            />
 
-            <Reveal delay={0.5}>
-              <p className="mt-8 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
-                Escribe directamente, agenda una llamada, o suscríbete a la
-                newsletter si todavía no estás listo. Respondo en menos de 24h
-                de lunes a viernes.
+            <Reveal delay={0.35}>
+              <p className="mt-8 text-cream max-w-2xl text-base md:text-lg leading-relaxed">
+                Escribe directamente, agenda una llamada, o suscríbete a las
+                notas del estudio si todavía no estás listo. Respondo en menos
+                de 24 horas de lunes a viernes.
               </p>
             </Reveal>
 
-            {/* Primary actions */}
             <div className="mt-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
               <Magnetic>
                 <a
                   href={`mailto:${studio.email}?subject=Nueva%20obra%20·%20Clickiclick.studio`}
-                  className="btn-press inline-flex items-center justify-between gap-4 h-16 px-7 bg-accent text-ink font-medium min-w-[280px] hover:bg-accent-deep transition-colors"
+                  className="btn-glass-primary inline-flex items-center justify-between gap-4 h-16 px-7 min-w-[280px]"
                 >
                   <span className="font-mono-meta">Escribir email</span>
-                  <span className="font-display text-lg">
-                    {studio.email}
-                  </span>
+                  <span className="font-display text-lg">{studio.email}</span>
                   <ArrowUpRight className="size-5" strokeWidth={1.5} />
                 </a>
               </Magnetic>
 
               <a
                 href={studio.social.calendly}
-                className="btn-press inline-flex items-center gap-3 h-16 px-7 border border-line-strong text-cream hover:border-cream transition-colors"
+                className="btn-glass-secondary inline-flex items-center gap-3 h-16 px-7"
               >
                 <span className="relative flex size-2">
                   <span className="absolute inset-0 rounded-full bg-cool animate-ping opacity-75" />
@@ -98,9 +89,12 @@ export function Contact() {
               </a>
             </div>
 
-            {/* Meta info */}
             <dl className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 max-w-4xl">
-              <ContactMeta label="Email" value={studio.email} href={`mailto:${studio.email}`} />
+              <ContactMeta
+                label="Email"
+                value={studio.email}
+                href={`mailto:${studio.email}`}
+              />
               <ContactMeta
                 label="Teléfono"
                 value={studio.phone}
@@ -113,22 +107,22 @@ export function Contact() {
         </div>
       </div>
 
-      {/* Bottom: newsletter */}
       <div className="container-wide section-pad">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8">
           <div className="md:col-span-3">
-            <p className="font-mono-meta text-cream-soft">Newsletter</p>
+            <p className="font-mono-meta text-cream-soft">Notas del estudio</p>
           </div>
           <div className="md:col-span-9 max-w-3xl">
-            <h3 className="font-display text-display-sm uppercase">
-              Los próximos lanzamientos,{" "}
+            <h3 className="font-display text-display-sm uppercase leading-[1.05]">
+              Notas del estudio,{" "}
               <span className="font-italic-display text-accent">
-                en tu bandeja.
+                una vez al mes.
               </span>
             </h3>
             <p className="mt-4 text-cream-soft text-base md:text-lg leading-relaxed">
-              Una nota corta cuando lanzo una obra o publico una pieza nueva.
-              Cero spam, cero marketing, cancelable en un click.
+              Una nota corta cuando publico una pieza nueva o aprendo algo
+              que merezca contarse. Cero spam, cero marketing, cancelable en
+              un click.
             </p>
 
             <form
@@ -152,7 +146,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={state === "loading" || !email}
-                  className="btn-press shrink-0 inline-flex items-center justify-center gap-2 h-12 px-6 bg-cream text-ink font-mono-meta disabled:opacity-50 disabled:pointer-events-none hover:bg-accent hover:text-ink transition-colors"
+                  className="btn-glass-primary shrink-0 inline-flex items-center justify-center gap-2 h-12 px-6 font-mono-meta disabled:opacity-50 disabled:pointer-events-none"
                 >
                   {state === "loading" ? (
                     "Enviando…"
@@ -177,9 +171,8 @@ export function Contact() {
                   className="mt-1 size-4 accent-accent shrink-0"
                 />
                 <span>
-                  Acepto recibir comunicaciones puntuales de Clickiclick.studio.
-                  Mi email se trata según el aviso legal y puedo cancelar
-                  cuando quiera.
+                  Acepto recibir las notas del estudio. Mi email se trata según
+                  el aviso legal y puedo cancelar cuando quiera.
                 </span>
               </label>
 

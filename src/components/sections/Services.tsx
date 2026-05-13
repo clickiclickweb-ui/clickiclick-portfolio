@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { services, type Service } from "@/lib/content";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
+import { SectionHeading } from "../shared/SectionHeading";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -24,20 +25,17 @@ export function Services() {
             <p className="font-mono-meta text-cream-soft">02 — Servicios</p>
           </div>
           <div className="md:col-span-9">
-            <Reveal>
-              <h2 className="font-display text-display-md uppercase max-w-4xl">
-                Seis disciplinas.{" "}
-                <span className="font-italic-display text-accent">
-                  Una sola firma.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
+            <SectionHeading
+              text="Disciplinas."
+              accent="Una sola firma."
+              variant="slide-up-rotate"
+              size="md"
+            />
+            <Reveal delay={0.25}>
               <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
                 Diseño y desarrollo de webs, sistemas de marca, productos de
-                inteligencia artificial, automatización, estrategia social y
-                consultoría creativa. Cada disciplina contratable por separado o
-                en conjunto.
+                inteligencia artificial, automatización y proyectos a medida.
+                Cada disciplina contratable por separado o en conjunto.
               </p>
             </Reveal>
           </div>
@@ -111,10 +109,13 @@ export function Services() {
                           </ul>
                           <a
                             href="#contact"
-                            className="mt-8 inline-flex items-center gap-2 font-mono-meta text-accent hover-line"
+                            className="btn-glass-secondary mt-8 inline-flex items-center gap-2 h-11 px-5 font-mono-meta"
                           >
                             Empezar este servicio
-                            <ArrowUpRight className="size-4" strokeWidth={1.5} />
+                            <ArrowUpRight
+                              className="size-4"
+                              strokeWidth={1.5}
+                            />
                           </a>
                         </div>
                       </div>

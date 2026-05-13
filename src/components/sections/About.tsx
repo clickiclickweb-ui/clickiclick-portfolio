@@ -4,7 +4,9 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { aboutCopy, studio } from "@/lib/content";
-import { Reveal, RevealWords } from "../shared/Reveal";
+import { Reveal } from "../shared/Reveal";
+import { SectionHeading } from "../shared/SectionHeading";
+import { Signature } from "../shared/Signature";
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,16 +30,14 @@ export function About() {
             <p className="font-mono-meta text-cream-soft">06 — Estudio</p>
           </div>
           <div className="md:col-span-9">
-            <Reveal>
-              <h2 className="font-display text-display-md uppercase max-w-4xl">
-                <RevealWords>{aboutCopy.display}</RevealWords>{" "}
-                <span className="font-italic-display text-accent normal-case">
-                  <RevealWords delay={0.2}>{aboutCopy.italicAccent}</RevealWords>
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
+            <SectionHeading
+              text={aboutCopy.display}
+              accent={aboutCopy.italicAccent}
+              variant="slide-up-soft"
+              size="md"
+            />
+            <Reveal delay={0.25}>
+              <p className="mt-6 text-cream max-w-2xl text-base md:text-lg leading-relaxed">
                 {aboutCopy.bodyShort}
               </p>
             </Reveal>
@@ -45,22 +45,22 @@ export function About() {
         </div>
 
         <div className="grid grid-cols-12 gap-4 md:gap-6">
-          {/* Portrait — large */}
+          {/* Portrait — large, the human */}
           <motion.div
             style={{ y: yPortrait }}
-            className="col-span-12 md:col-span-7 relative aspect-[4/5] md:aspect-[4/5] overflow-hidden card-editorial"
+            className="col-span-12 md:col-span-7 relative aspect-[4/5] overflow-hidden card-editorial"
           >
             <Image
               src="/images/studio/portrait.webp"
               alt="Diego Puelles trabajando en el estudio"
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
-              quality={90}
+              quality={88}
               className="object-cover"
             />
-            <div className="absolute bottom-4 left-4 right-4 flex items-baseline justify-between">
+            <div className="absolute inset-x-4 bottom-4 flex items-baseline justify-between">
               <span className="font-mono-meta text-cream bg-ink/70 px-2 py-1">
-                Diego Puelles
+                Diego Puelles · Autor
               </span>
               <span className="font-mono-meta text-cream-soft bg-ink/70 px-2 py-1">
                 MMXXVI · BCN
@@ -68,7 +68,7 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Side stack: desk + hands */}
+          {/* Side stack — secondary context */}
           <div className="col-span-12 md:col-span-5 flex flex-col gap-4 md:gap-6">
             <motion.div
               style={{ y: yDesk }}
@@ -79,9 +79,12 @@ export function About() {
                 alt="Mesa de trabajo del estudio"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                quality={88}
+                quality={85}
                 className="object-cover"
               />
+              <span className="absolute top-3 left-3 font-mono-meta text-cream-soft bg-ink/60 px-2 py-1">
+                Mesa
+              </span>
             </motion.div>
 
             <div className="flex-1 grid grid-cols-2 gap-4 md:gap-6">
@@ -94,18 +97,21 @@ export function About() {
                   alt="Detalle del proceso de sketch a mano"
                   fill
                   sizes="(max-width: 768px) 50vw, 20vw"
-                  quality={86}
+                  quality={85}
                   className="object-cover"
                 />
+                <span className="absolute top-3 left-3 font-mono-meta text-cream-soft bg-ink/60 px-2 py-1">
+                  Oficio
+                </span>
               </motion.div>
               <div className="p-4 md:p-6 card-editorial flex flex-col justify-between">
                 <div>
                   <p className="font-mono-meta text-cream-soft mb-3">Studio</p>
-                  <p className="font-display text-xl md:text-2xl leading-tight">
-                    Un solo cliente activo cada mes.
+                  <p className="font-display text-xl md:text-2xl leading-[1.05]">
+                    Un cliente activo a la vez. Atención completa al detalle.
                   </p>
                 </div>
-                <div className="space-y-1 text-xs text-cream-soft">
+                <div className="space-y-1 text-xs text-cream-soft mt-4">
                   <p>· {studio.city}</p>
                   <p>· {studio.scope}</p>
                   <p>· Desde {studio.founded}</p>
@@ -115,10 +121,10 @@ export function About() {
           </div>
         </div>
 
-        {/* Bio long */}
+        {/* Manifiesto personal */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-6 mt-16 md:mt-24">
           <div className="md:col-span-3">
-            <p className="font-mono-meta text-cream-soft">Sobre el autor</p>
+            <p className="font-mono-meta text-cream-soft">Manifiesto</p>
           </div>
           <div className="md:col-span-9 max-w-3xl space-y-5">
             {aboutCopy.bodyLong.map((p, i) => (
@@ -128,10 +134,11 @@ export function About() {
                 </p>
               </Reveal>
             ))}
-            <Reveal delay={0.4}>
-              <p className="font-italic-display text-cream-soft pt-4">
-                — Firmado, Diego Puelles.
-              </p>
+            <Reveal delay={0.4} className="pt-6 flex items-end gap-6">
+              <Signature className="w-32 md:w-44 text-accent" />
+              <span className="font-mono-meta text-cream-soft pb-2">
+                Diego Puelles · {studio.city} · MMXXVI
+              </span>
             </Reveal>
           </div>
         </div>

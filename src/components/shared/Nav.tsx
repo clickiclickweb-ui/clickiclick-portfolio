@@ -7,6 +7,8 @@ import { Magnetic } from "../ui/Magnetic";
 import { navItems, studio } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+const ease = [0.23, 1, 0.32, 1] as const;
+
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -30,28 +32,39 @@ export function Nav() {
     <>
       <header
         className={cn(
-          "fixed top-0 inset-x-0 z-50 transition-[backdrop-filter,background-color,border-color] duration-300",
+          "fixed top-0 inset-x-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300",
           scrolled
-            ? "bg-ink/70 backdrop-blur-md border-b border-line"
-            : "bg-transparent border-b border-transparent",
+            ? "bg-ink/75 backdrop-blur-md backdrop-saturate-150 border-b border-line"
+            : "bg-ink/10 backdrop-blur-[2px] border-b border-line/40",
         )}
       >
         <div className="container-wide flex h-16 md:h-20 items-center justify-between">
-          <a href="#hero" className="flex items-center gap-3 group">
+          <a
+            href="#hero"
+            className="flex items-center gap-3 group"
+            aria-label="Volver al inicio"
+          >
             <span className="font-mono-meta text-cream-soft hidden md:inline">
               {studio.founded}
             </span>
             <Wordmark className="text-base md:text-lg" />
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav
+            className="hidden md:flex items-center gap-8"
+            aria-label="Navegación principal"
+          >
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-mono-meta text-cream-soft hover:text-cream hover-line transition-colors"
+                className="font-mono-meta text-cream/85 hover:text-accent transition-colors duration-200 relative group"
               >
                 {item.label}
+                <span
+                  aria-hidden
+                  className="absolute left-0 -bottom-1 h-px w-full bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[420ms] ease-out"
+                />
               </a>
             ))}
           </nav>
@@ -60,7 +73,7 @@ export function Nav() {
             <Magnetic strength={0.18}>
               <a
                 href="#contact"
-                className="btn-press inline-flex items-center gap-2 h-10 px-5 border border-line-strong text-cream font-mono-meta hover:bg-cream hover:text-ink transition-colors"
+                className="btn-glass-secondary inline-flex items-center gap-2 h-10 px-5 font-mono-meta"
               >
                 <span className="relative flex size-1.5">
                   <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />
@@ -77,17 +90,17 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
-            className="md:hidden relative size-10 flex flex-col items-center justify-center gap-1.5"
+            className="md:hidden relative size-10 flex flex-col items-center justify-center gap-1.5 btn-press"
           >
             <span
               className={cn(
-                "block h-px w-6 bg-cream transition-transform duration-300 ease-out-quart",
+                "block h-px w-6 bg-cream transition-transform duration-300 ease-out",
                 open && "translate-y-[3px] rotate-45",
               )}
             />
             <span
               className={cn(
-                "block h-px w-6 bg-cream transition-transform duration-300 ease-out-quart",
+                "block h-px w-6 bg-cream transition-transform duration-300 ease-out",
                 open && "-translate-y-[3px] -rotate-45",
               )}
             />
@@ -95,14 +108,13 @@ export function Nav() {
         </div>
       </header>
 
-      {/* Mobile overlay menu */}
       <AnimatePresence>
         {open ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.25, ease }}
             className="fixed inset-0 z-40 bg-ink md:hidden flex flex-col"
           >
             <div className="flex-1 flex flex-col justify-center px-6">
@@ -115,7 +127,7 @@ export function Nav() {
                     transition={{
                       delay: 0.12 + i * 0.05,
                       duration: 0.5,
-                      ease: [0.23, 1, 0.32, 1],
+                      ease,
                     }}
                   >
                     <a

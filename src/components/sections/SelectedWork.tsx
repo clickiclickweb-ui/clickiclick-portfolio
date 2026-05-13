@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, type Project } from "@/lib/content";
 import { Reveal } from "../shared/Reveal";
+import { SectionHeading } from "../shared/SectionHeading";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,15 +18,13 @@ export function SelectedWork() {
             <p className="font-mono-meta text-cream-soft">03 — Selected work</p>
           </div>
           <div className="md:col-span-9">
-            <Reveal>
-              <h2 className="font-display text-display-md uppercase max-w-4xl">
-                Dos obras.{" "}
-                <span className="font-italic-display text-accent">
-                  Dos universos.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
+            <SectionHeading
+              text="Selected work."
+              accent="Dos obras hasta hoy."
+              variant="drop-dominant"
+              size="md"
+            />
+            <Reveal delay={0.25}>
               <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
                 Cada proyecto trabaja su propia paleta, su propio sistema, su
                 propia voz. El marco general recupera el control entre obra y
@@ -83,16 +82,20 @@ function ProjectCapsule({
       <motion.div
         style={{ y: yMedia }}
         className={cn(
-          "md:col-span-7 relative",
+          "md:col-span-7 relative group/media",
           flip ? "md:order-2" : "md:order-1",
         )}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
+        data-project={project.id}
       >
         <div
-          className="relative aspect-[16/10] overflow-hidden card-editorial"
+          className="relative aspect-[16/10] overflow-hidden card-editorial transition-[border-color] duration-300"
           style={{
             borderColor: hovering ? project.palette?.accent : undefined,
+            backgroundColor: hovering
+              ? `color-mix(in oklab, ${project.palette?.accent} 8%, transparent)`
+              : undefined,
           }}
         >
           <Image
@@ -101,10 +104,12 @@ function ProjectCapsule({
             fill
             sizes="(max-width: 768px) 100vw, 60vw"
             className={cn(
-              "object-cover object-top transition-opacity duration-500",
-              hovering ? "opacity-0" : "opacity-100",
+              "object-cover object-top transition-[opacity,transform,filter] duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)]",
+              hovering
+                ? "opacity-0 scale-[1.04] brightness-105"
+                : "opacity-100 scale-100 brightness-100",
             )}
-            quality={75}
+            quality={85}
           />
           <video
             ref={videoRef}
@@ -115,12 +120,14 @@ function ProjectCapsule({
             playsInline
             preload="metadata"
             className={cn(
-              "absolute inset-0 size-full object-cover object-top transition-opacity duration-500",
-              hovering ? "opacity-100" : "opacity-0",
+              "absolute inset-0 size-full object-cover object-top transition-[opacity,transform] duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)]",
+              hovering
+                ? "opacity-100 scale-[1.02]"
+                : "opacity-0 scale-100",
             )}
           />
-          {/* Project palette swatch overlay */}
-          <div className="absolute bottom-4 left-4 flex gap-1.5">
+          {/* Project palette swatches */}
+          <div className="absolute bottom-4 left-4 flex gap-1.5 z-10">
             <span
               className="size-2 rounded-full"
               style={{ background: project.palette?.base }}
@@ -134,7 +141,7 @@ function ProjectCapsule({
               style={{ background: project.palette?.muted }}
             />
           </div>
-          <div className="absolute top-4 left-4 font-mono-meta text-cream-soft bg-ink/60 backdrop-blur-sm border border-line px-3 py-1.5">
+          <div className="absolute top-4 left-4 font-mono-meta text-cream-soft bg-ink/60 backdrop-blur-sm border border-line px-3 py-1.5 z-10">
             {project.year} · {project.sector}
           </div>
         </div>
@@ -180,7 +187,7 @@ function ProjectCapsule({
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono-meta text-cream hover-line"
+            className="btn-glass-secondary inline-flex items-center gap-2 h-11 px-5 font-mono-meta"
           >
             Visitar live
             <ArrowUpRight className="size-4" strokeWidth={1.5} />

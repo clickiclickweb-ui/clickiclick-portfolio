@@ -4,6 +4,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { Plus, Minus } from "lucide-react";
 import { faq } from "@/lib/content";
 import { Reveal } from "../shared/Reveal";
+import { SectionHeading } from "../shared/SectionHeading";
 
 export function FAQ() {
   return (
@@ -14,15 +15,13 @@ export function FAQ() {
             <p className="font-mono-meta text-cream-soft">08 — Dudas</p>
           </div>
           <div className="md:col-span-9">
-            <Reveal>
-              <h2 className="font-display text-display-md uppercase max-w-3xl">
-                Preguntas{" "}
-                <span className="font-italic-display text-accent">
-                  frecuentes.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
+            <SectionHeading
+              text="Preguntas"
+              accent="frecuentes."
+              variant="slide-up-tight"
+              size="md"
+            />
+            <Reveal delay={0.25}>
               <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
                 Lo que pregunta la gente antes de firmar. Si no encuentras la
                 tuya, escribe directamente.

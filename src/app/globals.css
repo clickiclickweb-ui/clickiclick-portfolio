@@ -165,6 +165,121 @@ html.lenis body {
   transform: scale(0.97);
 }
 
+/* ───────── Glass button system (C5) ───────── */
+.btn-glass-primary {
+  background: rgba(163, 30, 56, 0.92);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border: 1px solid rgba(163, 30, 56, 0.35);
+  color: var(--color-cream);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 3px rgba(163, 30, 56, 0.12),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: background 240ms var(--ease-out-quart),
+    transform 240ms var(--ease-out-quart),
+    box-shadow 240ms var(--ease-out-quart),
+    border-color 240ms var(--ease-out-quart);
+  cursor: pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-glass-primary:hover {
+    background: rgba(163, 30, 56, 1);
+    transform: translateY(-1px);
+    border-color: rgba(163, 30, 56, 0.5);
+    box-shadow:
+      0 2px 6px rgba(163, 30, 56, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+}
+.btn-glass-primary:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 100ms ease-out;
+}
+
+.btn-glass-secondary {
+  background: rgba(243, 236, 222, 0.02);
+  backdrop-filter: blur(8px) saturate(1.05);
+  -webkit-backdrop-filter: blur(8px) saturate(1.05);
+  border: 1px solid rgba(243, 236, 222, 0.22);
+  color: var(--color-cream);
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  transition: background 240ms var(--ease-out-quart),
+    transform 240ms var(--ease-out-quart),
+    border-color 240ms var(--ease-out-quart);
+  cursor: pointer;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-glass-secondary:hover {
+    background: rgba(243, 236, 222, 0.08);
+    border-color: rgba(243, 236, 222, 0.45);
+    transform: translateY(-1px);
+  }
+}
+.btn-glass-secondary:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 100ms ease-out;
+}
+
+.btn-glass-ghost {
+  background: transparent;
+  color: var(--color-cream);
+  border: 0;
+  position: relative;
+  transition: color 220ms var(--ease-out-quart);
+  cursor: pointer;
+}
+.btn-glass-ghost::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease-out-quart);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-glass-ghost:hover {
+    color: var(--color-accent);
+  }
+  .btn-glass-ghost:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glass-primary,
+  .btn-glass-secondary,
+  .btn-glass-ghost {
+    transition-property: background, border-color, color !important;
+  }
+  .btn-glass-primary:hover,
+  .btn-glass-secondary:hover {
+    transform: none !important;
+  }
+  .btn-glass-primary:active,
+  .btn-glass-secondary:active {
+    transform: none !important;
+  }
+}
+
+/* Testimonial glass card (C6) */
+.testimonial-card {
+  background: rgba(243, 236, 222, 0.04);
+  backdrop-filter: blur(8px) saturate(1.05);
+  -webkit-backdrop-filter: blur(8px) saturate(1.05);
+  border: 1px solid rgba(243, 236, 222, 0.1);
+  border-radius: 4px;
+}
+
 .text-display-xl {
   font-size: clamp(4rem, 13vw, 14rem);
 }

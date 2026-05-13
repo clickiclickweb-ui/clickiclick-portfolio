@@ -125,16 +125,13 @@ export function Hero() {
             <Magnetic>
               <a
                 href="#contact"
-                className="btn-press inline-flex items-center gap-2 h-12 px-6 bg-accent text-cream font-medium text-sm hover:bg-accent-deep transition-colors"
+                className="btn-glass-primary inline-flex items-center gap-2 h-12 px-6 text-sm"
               >
                 {hero.cta}
                 <ArrowDownRight className="size-4" strokeWidth={1.5} />
               </a>
             </Magnetic>
-            <a
-              href="#work"
-              className="font-mono-meta text-cream hover:text-accent hover-line"
-            >
+            <a href="#work" className="btn-glass-ghost font-mono-meta px-0">
               {hero.ctaSecondary}
             </a>
           </motion.div>

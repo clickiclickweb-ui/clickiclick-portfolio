@@ -69,7 +69,7 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <Magnetic strength={0.18}>
               <a
                 href="#contact"

@@ -4,11 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
-// 4 alternating entry techniques. Index modulo picks one.
-// 0 — rise from below with mask
-// 1 — fade + scale from below
-// 2 — subtle rotation + slide
-// 3 — drop from above
 type Technique = 0 | 1 | 2 | 3;
 
 function variantFor(t: Technique, reduce: boolean) {
@@ -43,8 +38,6 @@ function variantFor(t: Technique, reduce: boolean) {
 }
 
 const pickTechnique = (i: number): Technique => {
-  // Custom pattern — not pure i%4 so the rhythm feels designed, not algorithmic.
-  // pattern: 0,1,2,0,3,1,0,2,1,3,2  ...
   const pattern: Technique[] = [0, 1, 2, 0, 3, 1, 0, 2, 1, 3, 2];
   return pattern[i % pattern.length];
 };
@@ -65,59 +58,77 @@ export function AlternatingDisplay({
   baseStyle?: React.CSSProperties;
 }) {
   const reduce = useReducedMotion();
-  const chars = Array.from(text);
+  // Split into word groups so the browser word-wraps cleanly,
+  // but letters inside a word never split.
+  const words = text.split(" ");
+  let globalIndex = 0;
 
   return (
     <span
       aria-label={text}
       className={className}
-      style={{ display: "inline-flex", flexWrap: "wrap", ...baseStyle }}
+      style={{ display: "inline", ...baseStyle }}
     >
-      {chars.map((ch, i) => {
-        const technique = pickTechnique(i);
-        const v = variantFor(technique, !!reduce);
-        if (ch === " ") {
-          return (
-            <span
-              key={`sp-${i}`}
-              aria-hidden
-              style={{ display: "inline-block", width: "0.32em" }}
-            />
-          );
-        }
-        return (
+      {words.map((word, wi) => {
+        const chars = Array.from(word);
+        const startOfWord = globalIndex;
+        const wordNode = (
           <span
-            key={`c-${i}`}
+            key={`w-${wi}`}
             aria-hidden
             style={{
               display: "inline-block",
-              overflow: "hidden",
-              lineHeight: 1.05,
-              paddingTop: "0.18em",
-              paddingBottom: "0.18em",
-              paddingLeft: "0.06em",
-              paddingRight: "0.16em",
-              marginLeft: "-0.06em",
-              marginRight: "-0.14em",
+              whiteSpace: "nowrap",
               verticalAlign: "top",
             }}
           >
-            <motion.span
-              initial={v.initial}
-              animate={v.animate}
-              transition={{
-                duration: letterDuration,
-                delay: startDelay + i * stagger,
-                ease,
-              }}
-              style={{
-                display: "inline-block",
-                lineHeight: 1,
-                willChange: "transform, opacity",
-              }}
-            >
-              {ch}
-            </motion.span>
+            {chars.map((ch, ci) => {
+              const i = startOfWord + ci;
+              const technique = pickTechnique(i);
+              const v = variantFor(technique, !!reduce);
+              return (
+                <span
+                  key={`c-${ci}`}
+                  aria-hidden
+                  style={{
+                    display: "inline-block",
+                    overflow: "hidden",
+                    lineHeight: 1.05,
+                    paddingTop: "0.18em",
+                    paddingBottom: "0.18em",
+                    paddingLeft: "0.04em",
+                    paddingRight: "0.14em",
+                    marginLeft: "-0.04em",
+                    marginRight: "-0.12em",
+                    verticalAlign: "top",
+                  }}
+                >
+                  <motion.span
+                    initial={v.initial}
+                    animate={v.animate}
+                    transition={{
+                      duration: letterDuration,
+                      delay: startDelay + i * stagger,
+                      ease,
+                    }}
+                    style={{
+                      display: "inline-block",
+                      lineHeight: 1,
+                      willChange: "transform, opacity",
+                    }}
+                  >
+                    {ch}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
+        );
+        globalIndex += chars.length;
+        return (
+          <span key={`wg-${wi}`}>
+            {wordNode}
+            {wi < words.length - 1 ? " " : null}
           </span>
         );
       })}

@@ -7,20 +7,15 @@ import { cn } from "@/lib/utils";
 const ease = [0.23, 1, 0.32, 1] as const;
 
 type Technique = 0 | 1 | 2 | 3;
-// 0 — slide up from below (clip)
-// 1 — scale-fade
-// 2 — slight rotate + slight slide
-// 3 — drop from above
 
-// Variants tune which techniques dominate and the cadence.
 type Variant =
-  | "hero-mix" // all 4 mixed
-  | "slide-up-rotate" // services: slide-up + scale + occasional rotate
-  | "drop-dominant" // selected work: drop dominant
-  | "scale-pure-fast" // process: pure scale-fade, faster
-  | "slide-up-soft" // about: slide-up + occasional drop on signature
-  | "scale-slow" // testimonials: scale-fade, slow
-  | "slide-up-tight"; // FAQ: slide-up, tight
+  | "hero-mix"
+  | "slide-up-rotate"
+  | "drop-dominant"
+  | "scale-pure-fast"
+  | "slide-up-soft"
+  | "scale-slow"
+  | "slide-up-tight";
 
 const PATTERNS: Record<Variant, Technique[]> = {
   "hero-mix": [0, 1, 2, 0, 3, 1, 0, 2, 1, 3, 2],
@@ -81,6 +76,21 @@ function pickTechnique(variant: Variant, i: number): Technique {
   return p[i % p.length];
 }
 
+function letterStyle(): React.CSSProperties {
+  return {
+    display: "inline-block",
+    overflow: "hidden",
+    lineHeight: 1.05,
+    paddingTop: "0.18em",
+    paddingBottom: "0.18em",
+    paddingLeft: "0.04em",
+    paddingRight: "0.14em",
+    marginLeft: "-0.04em",
+    marginRight: "-0.12em",
+    verticalAlign: "top",
+  };
+}
+
 interface AnimatedTextProps {
   text: string;
   variant: Variant;
@@ -99,56 +109,56 @@ function AnimatedText({
   patternOffset = 0,
 }: AnimatedTextProps) {
   const reduce = useReducedMotion();
-  const chars = Array.from(text);
+  const words = text.split(" ");
   const { stagger, duration } = TIMING[variant];
+  let globalIndex = 0;
 
   return (
-    <span aria-label={text} className={cn("inline-flex flex-wrap", className)}>
-      {chars.map((ch, i) => {
-        if (ch === " ") {
-          return (
-            <span
-              key={`sp-${i}`}
-              aria-hidden
-              style={{ display: "inline-block", width: "0.32em" }}
-            />
-          );
-        }
-        const technique = pickTechnique(variant, i + patternOffset);
-        const v = variantFor(technique, !!reduce);
-        return (
+    <span aria-label={text} className={cn("inline", className)}>
+      {words.map((word, wi) => {
+        const chars = Array.from(word);
+        const startOfWord = globalIndex;
+        const inner = (
           <span
-            key={`c-${i}`}
             aria-hidden
             style={{
               display: "inline-block",
-              overflow: "hidden",
-              lineHeight: 1.05,
-              paddingTop: "0.18em",
-              paddingBottom: "0.18em",
-              paddingLeft: "0.06em",
-              paddingRight: "0.16em",
-              marginLeft: "-0.06em",
-              marginRight: "-0.14em",
+              whiteSpace: "nowrap",
               verticalAlign: "top",
             }}
           >
-            <motion.span
-              initial={v.initial}
-              animate={inView ? v.animate : v.initial}
-              transition={{
-                duration,
-                delay: startDelay + i * stagger,
-                ease,
-              }}
-              style={{
-                display: "inline-block",
-                lineHeight: 1,
-                willChange: "transform, opacity",
-              }}
-            >
-              {ch}
-            </motion.span>
+            {chars.map((ch, ci) => {
+              const i = startOfWord + ci + patternOffset;
+              const technique = pickTechnique(variant, i);
+              const v = variantFor(technique, !!reduce);
+              return (
+                <span key={`c-${ci}`} aria-hidden style={letterStyle()}>
+                  <motion.span
+                    initial={v.initial}
+                    animate={inView ? v.animate : v.initial}
+                    transition={{
+                      duration,
+                      delay: startDelay + (startOfWord + ci) * stagger,
+                      ease,
+                    }}
+                    style={{
+                      display: "inline-block",
+                      lineHeight: 1,
+                      willChange: "transform, opacity",
+                    }}
+                  >
+                    {ch}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
+        );
+        globalIndex += chars.length;
+        return (
+          <span key={`wg-${wi}`}>
+            {inner}
+            {wi < words.length - 1 ? " " : null}
           </span>
         );
       })}
@@ -166,28 +176,17 @@ const SIZE_CLASS: Record<Size, string> = {
 };
 
 interface SectionHeadingProps {
-  /** Primary text (white/cream). */
   text: string;
-  /** Italic accent text (granate). */
   accent?: string;
   variant?: Variant;
   size?: Size;
-  /** Optional eyebrow above the heading (e.g. "02 — Servicios"). Pre-rendered by parent normally. */
   className?: string;
-  /** If true, fires immediately on mount (used for Hero). Default false → IntersectionObserver. */
   immediate?: boolean;
-  /** Extra delay for the whole headline (seconds). */
   delay?: number;
-  /** Render the wordmark italic style on the primary text too (used only on Hero CLICKICLICK). */
   uppercase?: boolean;
-  /** As semantic element. Default h2. */
   as?: "h1" | "h2" | "h3";
 }
 
-/**
- * Reusable section H2 with alternating-letter entry animation.
- * Triggers once when the heading enters the viewport (rootMargin-based).
- */
 export function SectionHeading({
   text,
   accent,
@@ -247,7 +246,7 @@ export function SectionHeading({
         {accent ? (
           <>
             {" "}
-            <span className="font-italic-display text-accent normal-case inline-block">
+            <span className="font-italic-display text-accent normal-case inline">
               <AnimatedText
                 text={accent}
                 variant={variant}

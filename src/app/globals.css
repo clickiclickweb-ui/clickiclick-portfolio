@@ -7,8 +7,12 @@
   --color-ink-soft: #15120f;
   --color-ink-deep: #050403;
   --color-cream: #f3ecde;
-  --color-cream-soft: #9a8d77;
+  --color-cream-soft: #b8af9a;
   --color-cream-mute: #5a5046;
+  /* Dedicated body-copy token (WCAG AAA on ink, 7.4:1). Use for paragraph text. */
+  --color-body: #d6cfbb;
+  /* Slightly dimmer for secondary captions / metadata (WCAG AA, 5.4:1). */
+  --color-body-muted: #a89e8c;
   --color-accent: #a31e38;
   --color-accent-deep: #6e1425;
   --color-cool: #8eb7b5;

@@ -31,7 +31,7 @@ export function Process() {
               size="md"
             />
             <Reveal delay={0.25}>
-              <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
+              <p className="mt-6 text-body max-w-2xl text-base md:text-lg leading-relaxed">
                 Cómo construyo cada obra, paso a paso. Cada fase tiene un
                 entregable claro, un cierre acordado, y una conversación en
                 directo contigo antes de pasar a la siguiente.
@@ -98,15 +98,15 @@ function ProcessPhase({
         <h3 className="font-display uppercase mb-4 text-[clamp(1.5rem,2.4vw,2.25rem)] leading-[1.05]">
           {phase.name}
         </h3>
-        <p className="font-italic-display text-cream-soft mb-5 max-w-2xl leading-snug text-[clamp(1.1rem,1.6vw,1.6rem)]">
+        <p className="font-italic-display text-body mb-5 max-w-2xl leading-snug text-[clamp(1.1rem,1.6vw,1.6rem)]">
           {phase.pull}
         </p>
-        <p className="text-cream/85 max-w-2xl leading-relaxed text-[clamp(1rem,1.15vw,1.18rem)]">
+        <p className="text-body max-w-2xl leading-relaxed text-[clamp(1rem,1.15vw,1.18rem)]">
           {phase.body}
         </p>
         {index === 4 ? (
           <p className="mt-7 font-mono-meta text-cool">
-            ▲ Pack mantenimiento mensual disponible
+            — Pack mantenimiento mensual disponible
           </p>
         ) : null}
       </div>

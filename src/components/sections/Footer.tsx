@@ -30,7 +30,7 @@ export function Footer() {
         {/* Studio block */}
         <div className="col-span-2 md:col-span-4 max-w-sm">
           <Wordmark className="text-base" />
-          <p className="mt-5 text-cream-soft text-sm leading-relaxed">
+          <p className="mt-5 text-body-muted text-sm leading-relaxed">
             Estudio de diseño, desarrollo, IA y automatización. Trabajos a
             medida desde {studio.city}, para clientes en Europa y América.
           </p>
@@ -75,11 +75,6 @@ export function Footer() {
                 className="text-cream hover-line"
               >
                 {studio.phone}
-              </a>
-            </li>
-            <li>
-              <a href={studio.social.calendly} className="text-cream hover-line">
-                Calendly
               </a>
             </li>
           </ul>

@@ -32,7 +32,7 @@ export function Services() {
               size="md"
             />
             <Reveal delay={0.25}>
-              <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
+              <p className="mt-6 text-body max-w-2xl text-base md:text-lg leading-relaxed">
                 Diseño y desarrollo de webs, sistemas de marca, productos de
                 inteligencia artificial, automatización y proyectos a medida.
                 Cada disciplina contratable por separado o en conjunto.
@@ -98,7 +98,7 @@ export function Services() {
                             {svc.deliverables.map((d, i) => (
                               <li
                                 key={i}
-                                className="flex items-baseline gap-3 text-cream/90"
+                                className="flex items-baseline gap-3 text-body"
                               >
                                 <span className="idx-num shrink-0">
                                   {String(i + 1).padStart(2, "0")}
@@ -111,7 +111,7 @@ export function Services() {
                             href="#contact"
                             className="btn-glass-secondary mt-8 inline-flex items-center gap-2 h-11 px-5 font-mono-meta"
                           >
-                            Empezar este servicio
+                            Hablemos sobre este servicio
                             <ArrowUpRight
                               className="size-4"
                               strokeWidth={1.5}

@@ -21,7 +21,7 @@ export function FAQ() {
               size="md"
             />
             <Reveal delay={0.25}>
-              <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
+              <p className="mt-6 text-body max-w-2xl text-base md:text-lg leading-relaxed">
                 Lo que pregunta la gente antes de firmar. Si no encuentras la
                 tuya, escribe directamente.
               </p>
@@ -60,7 +60,7 @@ export function FAQ() {
               </Accordion.Header>
               <Accordion.Content className="overflow-hidden data-[state=closed]:animate-fadeOut data-[state=open]:animate-fadeIn">
                 <div className="md:pl-16 pb-7 md:pb-10 pr-4 md:pr-16">
-                  <p className="text-cream/85 text-base md:text-lg leading-relaxed max-w-3xl">
+                  <p className="text-body text-base md:text-lg leading-relaxed max-w-3xl">
                     {item.a}
                   </p>
                 </div>

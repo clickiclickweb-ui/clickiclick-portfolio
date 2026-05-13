@@ -47,7 +47,7 @@ export function Manifesto() {
                 <Reveal
                   key={i}
                   delay={i * 0.1}
-                  className="text-cream/85 text-base md:text-lg leading-relaxed"
+                  className="text-body text-base md:text-lg leading-relaxed"
                 >
                   <p>{p}</p>
                 </Reveal>

@@ -37,7 +37,7 @@ export function About() {
               size="md"
             />
             <Reveal delay={0.25}>
-              <p className="mt-6 text-cream max-w-2xl text-base md:text-lg leading-relaxed">
+              <p className="mt-6 text-body max-w-2xl text-base md:text-lg leading-relaxed">
                 {aboutCopy.bodyShort}
               </p>
             </Reveal>
@@ -129,7 +129,7 @@ export function About() {
           <div className="md:col-span-9 max-w-3xl space-y-5">
             {aboutCopy.bodyLong.map((p, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <p className="text-cream/90 text-base md:text-lg leading-relaxed">
+                <p className="text-body text-base md:text-lg leading-relaxed">
                   {p}
                 </p>
               </Reveal>

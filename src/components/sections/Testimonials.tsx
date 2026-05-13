@@ -14,30 +14,31 @@ function StarRating({ value }: { value: 4.5 | 5 }) {
   const half = value % 1 !== 0;
   return (
     <span
-      className="inline-flex items-center gap-0.5"
+      className="inline-flex items-center gap-1"
       aria-label={`${value} estrellas sobre 5`}
     >
       {Array.from({ length: full }).map((_, i) => (
         <Star
           key={`f-${i}`}
-          className="size-3.5 fill-accent text-accent"
+          className="size-[20px] fill-accent text-accent"
           strokeWidth={1.5}
         />
       ))}
       {half ? (
         <StarHalf
-          className="size-3.5 fill-accent text-accent"
+          key="half"
+          className="size-[20px] fill-accent text-accent"
           strokeWidth={1.5}
         />
       ) : null}
       {Array.from({ length: 5 - full - (half ? 1 : 0) }).map((_, i) => (
         <Star
           key={`e-${i}`}
-          className="size-3.5 text-line-strong"
+          className="size-[20px] text-line-strong"
           strokeWidth={1.5}
         />
       ))}
-      <span className="font-mono-meta text-cream-soft ml-2">
+      <span className="font-mono-meta text-body ml-3 text-[0.75rem]">
         {value.toFixed(1)}
       </span>
     </span>
@@ -124,20 +125,25 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.6, ease }}
-              className="testimonial-card relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start p-6 md:p-10"
+              className="testimonial-card relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start p-7 md:p-10"
+              style={{
+                borderBottom: "1px solid rgba(163, 30, 56, 0.22)",
+              }}
             >
-              <div className="md:col-span-3 flex flex-row md:flex-col items-start gap-4 md:gap-5">
-                <Avatar index={active} />
-                <div className="flex flex-col gap-1.5 md:gap-2">
-                  <span className="font-display text-cream text-[clamp(0.95rem,1.05vw,1.15rem)] leading-tight">
-                    {t.name}
-                  </span>
-                  <span className="font-mono-meta text-cream-soft text-[0.65rem]">
-                    {t.role}
-                  </span>
-                  <span className="font-mono-meta text-cream-soft text-[0.65rem]">
-                    {t.company}
-                  </span>
+              <div className="md:col-span-3 flex flex-row md:flex-col items-start gap-5">
+                <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-3">
+                  <Avatar index={active} />
+                  <div className="flex flex-col gap-1.5">
+                    <span className="font-sans font-medium text-cream leading-tight text-[clamp(1.1rem,1.3vw,1.35rem)]">
+                      {t.name}
+                    </span>
+                    <span className="text-body-muted text-[clamp(0.9rem,0.95vw,1.05rem)] leading-tight">
+                      {t.role}
+                    </span>
+                    <span className="text-body-muted text-[clamp(0.9rem,0.95vw,1.05rem)] leading-tight">
+                      {t.company}
+                    </span>
+                  </div>
                 </div>
                 <span className="ml-auto md:ml-0 md:mt-2">
                   <StarRating value={t.rating} />
@@ -148,7 +154,7 @@ export function Testimonials() {
                   aria-hidden
                   className="block h-px w-12 bg-accent mb-6 opacity-70"
                 />
-                <p className="font-display text-cream leading-[1.18] max-w-3xl text-[clamp(1.1rem,1.8vw,1.6rem)]">
+                <p className="font-italic-display max-w-3xl leading-[1.5] text-[clamp(1.25rem,1.9vw,1.75rem)]" style={{ color: "#e8e0c8" }}>
                   {t.quote}
                 </p>
               </div>
@@ -189,9 +195,9 @@ export function Testimonials() {
           </button>
         </div>
 
-        <p className="mt-8 font-mono-meta text-cream-soft max-w-2xl">
-          ✷ Estos testimonios son provisionales mientras se cierran los primeros
-          clientes del estudio.
+        <p className="mt-8 font-mono-meta text-body-muted max-w-2xl">
+          — Estos testimonios son provisionales mientras se cierran los
+          primeros clientes del estudio.
         </p>
       </div>
     </section>

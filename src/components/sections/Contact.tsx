@@ -57,10 +57,10 @@ export function Contact() {
             />
 
             <Reveal delay={0.35}>
-              <p className="mt-8 text-cream max-w-2xl text-base md:text-lg leading-relaxed">
-                Escribe directamente, agenda una llamada, o suscríbete a las
-                notas del estudio si todavía no estás listo. Respondo en menos
-                de 24 horas de lunes a viernes.
+              <p className="mt-8 text-body max-w-2xl text-base md:text-lg leading-relaxed">
+                Escríbeme directamente o suscríbete al newsletter del estudio
+                si todavía no estás listo. Respondo en menos de 24 horas de
+                lunes a viernes.
               </p>
             </Reveal>
 
@@ -77,14 +77,14 @@ export function Contact() {
               </Magnetic>
 
               <a
-                href={studio.social.calendly}
+                href={`mailto:${studio.email}?subject=Hablemos%20·%20Clickiclick.studio`}
                 className="btn-glass-secondary inline-flex items-center gap-3 h-16 px-7"
               >
                 <span className="relative flex size-2">
                   <span className="absolute inset-0 rounded-full bg-cool animate-ping opacity-75" />
                   <span className="relative rounded-full size-2 bg-cool" />
                 </span>
-                <span className="font-mono-meta">Agendar llamada</span>
+                <span className="font-mono-meta">Escríbeme</span>
                 <ArrowUpRight className="size-4" strokeWidth={1.5} />
               </a>
             </div>
@@ -120,7 +120,7 @@ export function Contact() {
               </span>{" "}
               del estudio.
             </h3>
-            <p className="mt-4 text-cream-soft text-base md:text-lg leading-relaxed">
+            <p className="mt-4 text-body text-base md:text-lg leading-relaxed">
               1 email al mes con notas de proceso: piezas que estoy
               construyendo, decisiones técnicas, recursos que vale la pena
               compartir. Sin marketing, cancelable en un click.
@@ -164,7 +164,7 @@ export function Contact() {
                 </button>
               </div>
 
-              <label className="flex items-start gap-3 cursor-pointer text-sm text-cream-soft">
+              <label className="flex items-start gap-3 cursor-pointer text-sm text-body-muted">
                 <input
                   type="checkbox"
                   checked={consent}

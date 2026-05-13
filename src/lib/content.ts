@@ -28,7 +28,7 @@ export const hero = {
   taglineSecondary: "Obras digitales hechas a medida",
   intro:
     "Estudio independiente que firma webs, marcas y sistemas de inteligencia artificial sobre encargo. Cada proyecto se trabaja al detalle, mano a mano, revisión a revisión.",
-  cta: "Empezar una obra",
+  cta: "Hablemos",
   ctaSecondary: "Ver trabajo",
   meta: [
     { label: "Estudio", value: "Independiente" },

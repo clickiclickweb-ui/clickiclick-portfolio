@@ -25,7 +25,7 @@ export function SelectedWork() {
               size="md"
             />
             <Reveal delay={0.25}>
-              <p className="mt-6 text-cream-soft max-w-2xl text-base md:text-lg leading-relaxed">
+              <p className="mt-6 text-body max-w-2xl text-base md:text-lg leading-relaxed">
                 Cada proyecto trabaja su propia paleta, su propio sistema, su
                 propia voz. El marco general recupera el control entre obra y
                 obra — pero dentro de la cápsula, cada pieza vive con libertad.
@@ -165,7 +165,7 @@ function ProjectCapsule({
         <p className="font-italic-display text-cream-soft text-xl md:text-2xl mb-6">
           {project.subtitle}
         </p>
-        <p className="text-cream/85 leading-relaxed max-w-prose">
+        <p className="text-body leading-relaxed max-w-prose text-base md:text-lg">
           {project.description}
         </p>
 

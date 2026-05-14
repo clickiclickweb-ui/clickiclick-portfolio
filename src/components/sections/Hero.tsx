@@ -68,9 +68,9 @@ export function Hero() {
 
         {/* Centre display block */}
         <div className="mt-auto pb-6 md:pb-12">
-          {/* Wordmark — alternating letter animation */}
-          <h1 className="font-display text-display-xl uppercase text-cream relative leading-[1.02]">
-            <span className="block">
+          {/* Wordmark — single line "CLICKICLICK.studio" */}
+          <h1 className="font-display text-cream relative leading-[1.02] whitespace-nowrap text-[clamp(2rem,11.2vw,13rem)]">
+            <span className="uppercase inline-block align-baseline">
               <AlternatingDisplay
                 text="CLICKICLICK"
                 startDelay={0.3}
@@ -78,15 +78,16 @@ export function Hero() {
                 letterDuration={1.1}
               />
             </span>
-            <span className="block">
-              <span className="font-italic-display text-accent inline-block">
-                <AlternatingDisplay
-                  text="studio."
-                  startDelay={0.95}
-                  stagger={0.05}
-                  letterDuration={1.0}
-                />
-              </span>
+            <span
+              className="font-italic-display text-accent normal-case inline-block align-baseline"
+              style={{ fontSize: "0.42em", marginLeft: "-0.02em" }}
+            >
+              <AlternatingDisplay
+                text=".studio"
+                startDelay={0.95}
+                stagger={0.05}
+                letterDuration={1.0}
+              />
             </span>
           </h1>
 

@@ -77,14 +77,16 @@ export function Contact() {
               </Magnetic>
 
               <a
-                href={`mailto:${studio.email}?subject=Hablemos%20·%20Clickiclick.studio`}
+                href="https://calendly.com/diegopuelles/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glass-secondary inline-flex items-center gap-3 h-16 px-7"
               >
                 <span className="relative flex size-2">
                   <span className="absolute inset-0 rounded-full bg-cool animate-ping opacity-75" />
                   <span className="relative rounded-full size-2 bg-cool" />
                 </span>
-                <span className="font-mono-meta">Escríbeme</span>
+                <span className="font-mono-meta">Agenda una llamada</span>
                 <ArrowUpRight className="size-4" strokeWidth={1.5} />
               </a>
             </div>

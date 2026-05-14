@@ -17,7 +17,7 @@ export function Manifesto() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
 
   return (
-    <section ref={sectionRef} className="relative bg-ink overflow-hidden">
+    <section ref={sectionRef} className="relative bg-ink overflow-x-clip overflow-y-visible">
       <div className="container-wide section-pad">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           <div className="md:col-span-3">

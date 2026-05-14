@@ -194,11 +194,6 @@ export function Testimonials() {
             <ChevronRight className="size-4" strokeWidth={1.5} />
           </button>
         </div>
-
-        <p className="mt-8 font-mono-meta text-body-muted max-w-2xl">
-          — Estos testimonios son provisionales mientras se cierran los
-          primeros clientes del estudio.
-        </p>
       </div>
     </section>
   );

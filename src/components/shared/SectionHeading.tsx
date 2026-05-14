@@ -79,14 +79,15 @@ function pickTechnique(variant: Variant, i: number): Technique {
 function letterStyle(): React.CSSProperties {
   return {
     display: "inline-block",
-    overflow: "hidden",
+    overflowX: "clip",
+    overflowY: "visible",
     lineHeight: 1.05,
-    paddingTop: "0.18em",
-    paddingBottom: "0.18em",
-    paddingLeft: "0.04em",
-    paddingRight: "0.14em",
-    marginLeft: "-0.04em",
-    marginRight: "-0.12em",
+    paddingTop: "0.22em",
+    paddingBottom: "0.28em",
+    paddingLeft: "0.06em",
+    paddingRight: "0.18em",
+    marginLeft: "-0.06em",
+    marginRight: "-0.16em",
     verticalAlign: "top",
   };
 }
